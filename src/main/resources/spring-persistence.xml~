@@ -15,7 +15,7 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"> 
 
     <tx:annotation-driven />  
-
+	<context:property-placeholder />
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
             <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
             <property name="url"
@@ -35,6 +35,16 @@
         </bean>
 
     <!-- Bean definitions go here -->
+<bean id="dataSource"
+class="org.apache.commons.dbcp.BasicDataSource">
+<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+<property name="url"
+value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}" />
+<property name="username" value="${OPENSHIFT_MYSQL_DB_USERNAME}" />
+<property name="password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}" />
+<property name="initialSize" value="5" />
+<property name="maxActive" value="10" />
+</bean>
      <!--<bean id="items" class="com.swcguild.vendingmachinemvc.dao.ItemDaoInMemImpl"></bean> -->
     <bean id="items" class="com.swcguild.vendingmachinemvc.dao.ItemDaoDbImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
