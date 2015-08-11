@@ -90,9 +90,9 @@ $(document).ready(function () {
         $("#nickels").text(nickels);
         $("#pennies").text(pennies);
 
-
+        $("#userMoney").val(0);
         $.ajax({url: 'response/exit'}).success(function (data, status) {
-
+        
         });
     });
 });
