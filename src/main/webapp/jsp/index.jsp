@@ -16,6 +16,9 @@
     <body>
         <div  class="container">
             <div class="row">
+                <h4 align="center">Source code available in <a href="https://github.com/bachmoog/public_vendingmachine">github account</a></h4>
+            </div>
+            <div class="row">
                 <div class="col-lg-8 panel" style="border: 2px solid black; padding-top: 10px; padding-bottom: 10px">
                     <div class="row">
                         <div id="0" >

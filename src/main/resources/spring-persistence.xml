@@ -16,15 +16,19 @@
 
     <tx:annotation-driven />  
 	<context:property-placeholder />
-    <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-            <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-            <property name="url"
-                  value="jdbc:mysql://localhost:3306/vending_machine" />
-            <property name="username" value="root" />
-            <property name="password" value="root" />
-            <property name="initialSize" value="5" />
-            <property name="maxActive" value="10" />
-        </bean> -->
+        
+    <!-- Bean definitions go here -->
+
+<!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+              value="jdbc:mysql://localhost:3306/vending_machine" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+        <property name="initialSize" value="5" />
+        <property name="maxActive" value="10" />
+    </bean>
+    <bean id="items" class="com.swcguild.vendingmachinemvc.dao.ItemDaoInMemImpl"></bean>
 
         <bean id="transactionManager"
             class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -33,21 +37,19 @@
         <bean id="jdbcTemplate"
             class="org.springframework.jdbc.core.JdbcTemplate">
             <property name="dataSource" ref="dataSource" /> 
-        </bean>
+        </bean> -->
 
-    <!-- Bean definitions go here -->
-<bean id="dataSource"
-class="org.apache.commons.dbcp.BasicDataSource">
-<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-<property name="url"
-value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}" />
-<property name="username" value="${OPENSHIFT_MYSQL_DB_USERNAME}" />
-<property name="password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}" />
-<property name="initialSize" value="5" />
-<property name="maxActive" value="10" />
-</bean>
-     <!--<bean id="items" class="com.swcguild.vendingmachinemvc.dao.ItemDaoInMemImpl"></bean> -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+        value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}" />
+        <property name="username" value="${OPENSHIFT_MYSQL_DB_USERNAME}" />
+        <property name="password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}" />
+        <property name="initialSize" value="5" />
+        <property name="maxActive" value="10" />
+   </bean>
     <bean id="items" class="com.swcguild.vendingmachinemvc.dao.ItemDaoDbImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
+    
 </beans>
